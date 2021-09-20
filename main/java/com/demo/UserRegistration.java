@@ -2,6 +2,10 @@ package com.demo;
 
 import java.util.regex.Pattern;
 
+/**
+ * @author jayeshkumar This class has REGEX pattern for user details and method
+ *         to validate each detail
+ */
 public class UserRegistration {
 
 	final String NAME = "^[A-Z][a-z]{2}[a-z]*";

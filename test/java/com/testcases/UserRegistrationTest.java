@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import com.demo.UserRegistration;
 
+/**
+ * @author jayeshkumar Tests all the user details
+ */
 public class UserRegistrationTest {
 
 	/**
