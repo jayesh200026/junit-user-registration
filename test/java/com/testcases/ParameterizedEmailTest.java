@@ -8,9 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import com.demo.InvalidUserDetailException;
 import com.demo.UserRegistration;
 
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author jayeshkumar This program test multiple set of emails for validity
@@ -52,10 +53,14 @@ public class ParameterizedEmailTest {
 	/**
 	 * Tests user email from collections for validity
 	 */
-	@SuppressWarnings("deprecation")
+
 	@Test
 	public void parameterized_emailtesting_returntrueorfalse() {
-		Assert.assertEquals(expectedResult, user.validateEmail(email));
+		try {
+			assertEquals(expectedResult, user.validateEmail(email));
+		} catch (InvalidUserDetailException e) {
+			System.out.println(e);
+		}
 	}
 
 }

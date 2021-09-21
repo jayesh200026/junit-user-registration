@@ -18,26 +18,75 @@ public class UserRegistration {
 
 	final String PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,20}";
 
-	public boolean validateFirstName(String firstname) {
+	/**
+	 * 
+	 * @return true if first name is valid
+	 * @throws InvalidUserDetailException if users first name is invalid
+	 */
+	public boolean validateFirstName(String firstname) throws InvalidUserDetailException {
 
-		return Pattern.matches(NAME, firstname);
+		boolean fnameResult = Pattern.matches(NAME, firstname);
+		if (fnameResult) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid First name");
+		}
 	}
 
-	public boolean validateLastName(String lastname) {
-		return Pattern.matches(NAME, lastname);
+	/**
+	 * 
+	 * @return true if last name is valid
+	 * @throws InvalidUserDetailException if users last name is invalid
+	 */
+	public boolean validateLastName(String lastname) throws InvalidUserDetailException {
+		boolean lnameResult = Pattern.matches(NAME, lastname);
+		if (lnameResult) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid Last name");
+		}
 	}
 
-	public boolean validatePhoneNumber(String phoneNumber) {
-		return Pattern.matches(PHONE, phoneNumber);
+	/**
+	 * 
+	 * @return true if phone number is valid
+	 * @throws InvalidUserDetailException if users phone number is invalid
+	 */
+	public boolean validatePhoneNumber(String phoneNumber) throws InvalidUserDetailException {
+		boolean phoneResult = Pattern.matches(PHONE, phoneNumber);
+		if (phoneResult) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid Phone number");
+		}
 	}
 
-	public boolean validateEmail(String email) {
-		return Pattern.matches(EMAIL, email);
-
+	/**
+	 * 
+	 * @return true if email is valid
+	 * @throws InvalidUserDetailException if email is invalid
+	 */
+	public boolean validateEmail(String email) throws InvalidUserDetailException {
+		boolean emailResult = Pattern.matches(EMAIL, email);
+		if (emailResult) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid Email address");
+		}
 	}
 
-	public boolean validatePassword(String password) {
-		return Pattern.matches(PASSWORD, password);
+	/**
+	 * 
+	 * @return true if password is valid
+	 * @throws InvalidUserDetailException if users password is invalid
+	 */
+	public boolean validatePassword(String password) throws InvalidUserDetailException {
+		boolean passwordResult = Pattern.matches(PASSWORD, password);
+		if (passwordResult) {
+			return true;
+		} else {
+			throw new InvalidUserDetailException("Invalid password");
+		}
 	}
 
 }
