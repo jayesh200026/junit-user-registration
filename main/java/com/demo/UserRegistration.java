@@ -18,14 +18,22 @@ public class UserRegistration {
 
 	final String PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,20}";
 
+	// Following are the lambda functions to each validating one user property.
+
+	IValidateUserDetail validateFirstNamelambda = (firstName) -> Pattern.matches(NAME, firstName);
+	IValidateUserDetail validateLastNamelambda = (lastName) -> Pattern.matches(NAME, lastName);
+	IValidateUserDetail validatePhonelambda = (phone) -> Pattern.matches(PHONE, phone);
+	IValidateUserDetail validateEmaillambda = (email) -> Pattern.matches(EMAIL, email);
+	IValidateUserDetail validatePasswordlambda = (password) -> Pattern.matches(PASSWORD, password);
+
 	/**
 	 * 
-	 * @return true if first name is valid
+	 * @return true if first name is valid ,uses lambda function
 	 * @throws InvalidUserDetailException if users first name is invalid
 	 */
 	public boolean validateFirstName(String firstname) throws InvalidUserDetailException {
 
-		boolean fnameResult = Pattern.matches(NAME, firstname);
+		boolean fnameResult = validateFirstNamelambda.validateUserDetail(firstname);
 		if (fnameResult) {
 			return true;
 		} else {
@@ -35,11 +43,11 @@ public class UserRegistration {
 
 	/**
 	 * 
-	 * @return true if last name is valid
+	 * @return true if last name is valid,uses lambda function
 	 * @throws InvalidUserDetailException if users last name is invalid
 	 */
 	public boolean validateLastName(String lastname) throws InvalidUserDetailException {
-		boolean lnameResult = Pattern.matches(NAME, lastname);
+		boolean lnameResult = validateLastNamelambda.validateUserDetail(lastname);
 		if (lnameResult) {
 			return true;
 		} else {
@@ -49,11 +57,11 @@ public class UserRegistration {
 
 	/**
 	 * 
-	 * @return true if phone number is valid
+	 * @return true if phone number is valid,uses lambda function
 	 * @throws InvalidUserDetailException if users phone number is invalid
 	 */
 	public boolean validatePhoneNumber(String phoneNumber) throws InvalidUserDetailException {
-		boolean phoneResult = Pattern.matches(PHONE, phoneNumber);
+		boolean phoneResult = validatePhonelambda.validateUserDetail(phoneNumber);
 		if (phoneResult) {
 			return true;
 		} else {
@@ -63,11 +71,11 @@ public class UserRegistration {
 
 	/**
 	 * 
-	 * @return true if email is valid
+	 * @return true if email is valid,uses lambda function
 	 * @throws InvalidUserDetailException if email is invalid
 	 */
 	public boolean validateEmail(String email) throws InvalidUserDetailException {
-		boolean emailResult = Pattern.matches(EMAIL, email);
+		boolean emailResult = validateEmaillambda.validateUserDetail(email);
 		if (emailResult) {
 			return true;
 		} else {
@@ -77,11 +85,11 @@ public class UserRegistration {
 
 	/**
 	 * 
-	 * @return true if password is valid
+	 * @return true if password is valid,uses lambda function
 	 * @throws InvalidUserDetailException if users password is invalid
 	 */
 	public boolean validatePassword(String password) throws InvalidUserDetailException {
-		boolean passwordResult = Pattern.matches(PASSWORD, password);
+		boolean passwordResult = validatePasswordlambda.validateUserDetail(password);
 		if (passwordResult) {
 			return true;
 		} else {
