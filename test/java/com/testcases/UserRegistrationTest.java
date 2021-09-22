@@ -3,6 +3,7 @@ package com.testcases;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.demo.IValidateUserDetail;
 import com.demo.InvalidUserDetailException;
 import com.demo.UserRegistration;
 
